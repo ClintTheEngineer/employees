@@ -1,3 +1,7 @@
-.form-control {
-    width: 80%;
+* {
+    background-color: whitesmoke;
+}
+
+#search-bar {
+    width: 50vw;
 }
