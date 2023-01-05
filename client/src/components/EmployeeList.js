@@ -21,7 +21,7 @@ const onSubmitForm = async e => {
     e.preventDefault();
     try {
         const body = { firstName, lastName, jobTitle, dateOfHire, salary, email, id };
-        await fetch(`/employees`, {
+        await fetch(`https://employees-server.cyclic.app/employees`, {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(body)
@@ -40,7 +40,7 @@ const onSubmitForm = async e => {
 
 const deleteEmployee = async (id) => {
     try {
-        await fetch(`/employees/${id}`, {
+        await fetch(`https://employees-server.cyclic.app/employees/${id}`, {
             method: "DELETE"
         })
         setResults(results.filter(employees => employees.id !== id))
@@ -53,12 +53,12 @@ const deleteEmployee = async (id) => {
 
 useEffect(() => {
 const fetchResults = async () => {
-const response = await fetch(`/search?term=${searchTerm}`);
+const response = await fetch(`https://employees-server.cyclic.app/search?term=${searchTerm}`);
 const data = await response.json();
 setResults(data);
 }
 fetchResults();
-}, [searchTerm]); // this will only re-run the effect if the searchTerm changes
+}, [searchTerm]); 
 
 const handleChange = (e) => {
 setSearchTerm(e.target.value);

@@ -15,7 +15,7 @@ const EditEmployee = ({ employee }) => {
         e.preventDefault();
         try {
             const body = { id, firstName, lastName, jobTitle, dateOfHire, salary, email };
-            await fetch(`/employees/${employee.id}`,
+            await fetch(`https://employees-server.cyclic.app/employees/${employee.id}`,
              {
                 method: 'PUT', 
                 headers: { "Content-Type": "application/json" },
