@@ -47,6 +47,15 @@ app.get('/employees/:id', async(req, res) => {
     }
 })
 
+app.get('/search/', async (req, res) => {
+    const searchTerm = req.query.term;
+    const client = await pool.connect();
+    const result = await client.query(`
+       SELECT * FROM corp_data WHERE last_name LIKE '%${searchTerm}%' ORDER BY last_name ASC;
+    `);
+    client.release();
+    res.send(result.rows);
+ });
 
 app.put('/employees/:id', async (req, res) => {
     try {
@@ -72,9 +81,7 @@ app.delete("/employees/:id", async(req, res) => {
     } catch  (err) {
         console.log(err.message)
     }
-}
-
-)
+});
 
 
 

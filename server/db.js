@@ -13,9 +13,8 @@ const devConfig = ({
 const proConfig = {
     connectionString: process.env.URL
 }
+
 const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
-
-
 
 
 
